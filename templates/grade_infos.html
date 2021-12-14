@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>student achievement manage system</title>
+    <link rel="icon" href="http://v3.bootcss.com/favicon.ico">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        li {
+            list-style: none;
+        }
+
+        a {
+            text-decoration: none;
+            color: white;
+        }
+
+        .header {
+            position: relative;
+            width: 100%;
+            height: 55px;
+            background-color: black;
+        }
+
+        .left {
+            position: absolute;
+            left: 20px;
+            font-size: 20px;
+            line-height: 55px;
+            color: white;
+            text-align: center;
+        }
+
+        .right {
+            position: absolute;
+            right: 160px;
+            line-height: 55px;
+            color: white;
+            text-align: center;
+        }
+
+        .right_right {
+            position: absolute;
+            right: 24px;
+            line-height: 55px;
+            color: white;
+            text-align: center;
+        }
+
+        .leftside {
+            float: left;
+            background-color: rgb(245, 245, 245);
+            /* height: 663px; */
+            width: 230px;
+        }
+
+        .leftside ul {
+
+            height: 663px;
+        }
+
+        .leftside .first {
+            background-color: rgb(66, 139, 202);
+            margin-top: 25px;
+
+        }
+
+        .leftside .first a {
+            color: white;
+
+        }
+
+        .leftside ul li {
+
+            border-bottom: 0.2px solid white;
+
+            font-size: 20px;
+            height: 60px;
+            line-height: 60px;
+            width: 100%;
+            text-align: center;
+        }
+
+        .leftside ul li a {
+            color: black;
+        }
+
+        .container-fluid {
+            position: relative;
+            top: 35px;
+            left: 70px;
+        }
+
+        /* .sub-header {
+            margin-top: 35px;
+        } */
+
+        .table-responsive {
+
+            margin-top: 10px;
+        }
+
+        /* .table-striped {
+
+            width: 1250px;
+        } */
+
+        thead tr th {
+            background-color: white;
+        }
+
+        tbody tr {
+            background-color: rgb(245, 245, 245);
+        }
+
+        tbody tr td select {
+            height: 26px;
+        }
+
+
+        tbody tr td .long {
+            width: 120px;
+            height: 22px;
+        }
+
+        tbody tr td .last {
+            height: 25px;
+            width: 60px;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="header">
+        <span class="left">query student score</span>
+        <span class="right">hello, teacher {{user_info}}!</span>
+        <span class="right_right"><a href="/">exit</a></span>
+    </div>
+    <div class="leftside">
+        <ul>
+            <li><a href="/student">add student info</a></li>
+            <li><a href="/teacher">add course info</a></li>
+            <li><a href="/grade">add score info</a></li>
+            <li class="first"><a href="#">query student score</a></li>
+            <li><a href="/adminstator">change administrator</a></li>
+        </ul>
+    </div>
+    <div class="container-fluid">
+        <h1 class="sub-header">query student score</h1>&nbsp;&nbsp;
+        <hr>
+        <div class="table-responsive">
+            <table class="table table-striped" cellspaing="10">
+                <!-- <thead>
+                    
+                </thead> -->
+                <tbody>
+                    <tr>
+                        <form action="" method="post">
+                            <td><label for="#">select the query mode:(studentID/studentName/courseID/classID)</label>&nbsp;&nbsp;&nbsp;</td>
+                            <td><select name="selected_one">
+                                    <option value="studentID" selected="selected">studentID</option>
+                                    <option value="student name">student name</option>
+                                    <option value="courseID">courseID</option>
+                                    <option value="class">class</option>
+                                </select></td>&nbsp;
+                            <td><input class="long" type="text" name="query"></td>
+                            <td><input class="last" type="submit" value="query" /></td>
+                            <td><span>查询结果:{{query_result}}</span></td>
+                        </form>
+                    </tr>
+                    <tr>
+                        <td>studentID</td>
+                        <td>courseID</td>
+                        <td>score</td>
+                    </tr>
+                    {% for result in results %}
+                    <tr>
+                        <td>{{result[0]}}</td>
+                        <td>{{result[1]}}</td>
+                        <td>{{result[2]}}</td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+
+
+</body>
+
+</html>
